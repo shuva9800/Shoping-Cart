@@ -13,7 +13,7 @@ export default function Cartitems({ product }) {
     toast.error("Item remove successfully");
   }
   return (
-    <div className="saveitem">
+    <div className="border-b-4">
       <div>
         <img src={product.image} />
         <div>

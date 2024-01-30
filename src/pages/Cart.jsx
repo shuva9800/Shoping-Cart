@@ -10,7 +10,7 @@ export default function Cart() {
     <div>
     {
         cart.length >0 ?
-        <div>
+        <div className='flex w-full'>
         {<div>
             {
                 cart.map((product)=>(<Cartitems key={product.id} product={product}/>))
