@@ -15,8 +15,7 @@ body {
 
 }
 .nav-img{
-  height: 20px;
-  width: 30px;
+  height: 28px;
 }
 .spinner {
   position: relative;
@@ -67,5 +66,142 @@ body {
   90%, 100% {
      opacity: 0;
      transform: rotateY(-180deg);
+  }
+}
+
+.cart-page{
+  width: 100%;
+  height: auto;
+  display: flex;
+  padding: 0 1rem;
+}
+.cart-item{
+  width: 50%;
+  height: 30rem;
+  
+}
+.checkout-section{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: space-between;
+  gap: 16rem;
+  padding: 2rem;
+
+}
+.each-item{
+  height: 13em;
+  width: 100%;
+}
+.cart-image{
+  display: flex;
+
+  height: 12rem;
+  width:100%;
+  border-bottom: 2px solid black;
+}
+.cart-image img{
+  height: 90%;
+  width: 55%;
+}
+.image-desc{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 1.5rem;
+}
+.image-desc p{
+ font-weight: bold;
+}
+.image-desc h3{
+  font-size: small;
+
+}
+.pricedelete-button{
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: .4rem;
+}
+.pricedelete-button p{
+  color: green;
+}
+.pricedelete-button div{
+  height: 1.5rem;
+  width: 1.5rem;
+  border-radius: 50%;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.summary-sec h3, h2{
+  color: green;
+  font-size: 1.3rem;
+
+}
+.summary-sec h2{
+     font-weight: bold;
+    font-size: 2rem;
+}
+.btn{
+    width: 10rem;
+    background: green;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    color: white;
+}
+.total-amount{
+    padding-bottom: 1rem;
+
+}
+.empty-item{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-direction: column;
+}
+.empty-item button{
+  width: 10rem;
+  background: green;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  color: white;
+}
+
+@media screen and  (max-width:760px){
+  .cart-page{
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+  }
+  .cart-item{
+    height: 100%;
+    width: 100%;
+  }
+  .image-desc{
+    padding:0 .5rem;
+  }
+  .checkout-section{
+    width: 100%;
+    flex-direction: row;
+    gap: 0rem;
+    justify-content: space-between;
+    padding: 0px;
+    margin-bottom: 1rem;
+  }
+  .summary-sec h2{
+    font-size: 1.3rem;
+  }
+}
+@media screen and (min-width:1200px){
+  .cart-image img{
+    width: 40%;
+  }
+  .image-desc{
+    gap:1.5rem
   }
 }

@@ -6,25 +6,27 @@ import 'react-toastify/dist/ReactToastify.css';
 import { remove} from "../redux/Slices/cardslice"
 
 export default function Cartitems({ product }) {
-  const desc=`${product.description.substring(0,100)}...`;
+  const title=`${product.title.substring(0,30)}..`
+  const desc=`${product.description.substring(0,50)}...`;
   const dispatch=useDispatch();
   function deleteItem(){
     dispatch(remove(product.id));
     toast.error("Item remove successfully");
   }
   return (
-    <div className="border-b-4">
-      <div>
+    <div className="each-item">
+      <div className="cart-image">
         <img src={product.image} />
-        <div>
-          <p>{product.title}</p>
-          <h1>{desc}</h1>
-          <div>
-            <p>{product.price}</p>
+        <div className="image-desc">
+          <p>{title}</p>
+          <h3>{desc}</h3>
+          <div className="pricedelete-button">
+             <p>${product.price}</p>
+              <div onClick={deleteItem}>
+            <MdOutlineDeleteForever />
           </div>
-          <div onClick={deleteItem}>
-          <MdOutlineDeleteForever />
           </div>
+          
         </div>
       </div>
     </div>

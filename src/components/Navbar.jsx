@@ -3,6 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
+
 export default function Navbar() {
   const {cart}=useSelector((state)=>state);
   return (
@@ -11,7 +12,7 @@ export default function Navbar() {
       <NavLink to="/">
         <div className="ml-5">
           <img
-            src="https://img.freepik.com/free-vector/gradient-code-logo-with-tagline_23-2148811020.jpg"
+          src="../logo.png"
             className="nav-img"
           />
         </div>

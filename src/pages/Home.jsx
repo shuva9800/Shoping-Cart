@@ -13,9 +13,8 @@ export default function Home() {
     try {
       const data = await fetch(API_URL);
       const value = await data.json();
+      
       setPost(value);
-      console.log(post);
-
       console.log(post);
     } catch (err) {
       console.log("error aya haaa");
@@ -28,54 +27,51 @@ export default function Home() {
   }, []);
 
 
- const[formdata, setFormdata]=useState({
-  slider: 7,
-  cloth:false,
-  jewelery:false,
-  electronics:false
-})
 
-  function changeHandler(event){
-    let { name, type, value, checked } = event.target;
-  setFormdata((prevdata)=>(
-    {
-      ...prevdata,
-      [name]: type === "checkbox" ? checked : value
-    }
-      ))
-  // code to be added
-  // const pricerageitem= post.filter((item)=> item.price>= formdata.slider);
-  // setPost(pricerageitem);
-  // console.log(pricerageitem);
-  //if man's cloth is false then remove this type of object from pricerageitem
+
+ // slider handeler  function 
+const[slidervalue, setSlidervalue]=useState(7);
+function changesliderHandler(event){
+  setSlidervalue(event.target.value)
+}
+
+//check box handel function
+const[checkeditem,setCheckeditem]=useState([]);
+
+function changeHandler(catagory){
+  if(checkeditem.includes(catagory)){
+    setCheckeditem(checkeditem.filter((item)=> item !== catagory));
   }
+  else{
+    setCheckeditem([...checkeditem ,catagory])
+  }
+
+}
+
+
+//form submit function
 function filterHandler(event){
   event.preventDefault();
-  console.log("hello")
-  const pricerageitem= post.filter((item)=> item.price>= formdata.slider);
-  setPost(pricerageitem);
-  if(formdata.electronics==false)
-  {
-    const withoutelectromics=pricerageitem.filter((item)=>item.category!=="electronics");
-    setPost(withoutelectromics);
-  }
-  
+  const filterItem=post.filter((item)=>
+  (checkeditem.length==0 || checkeditem.includes(item.catagory)) &&
+  item.price>=slidervalue );
+  setPost(filterItem);
 }
   return (
     <div>
-      <div>
+      {/* <div>
        <form onSubmit={filterHandler}>
        <input type="range" min="7" max="1000" 
           name="slider"
-          onChange={changeHandler}
-          value={formdata.slider}
+          onChange={changesliderHandler}
+          value={slidervalue}
         />
            <label>
         <input 
           type="checkbox"
           name="cloth"
-          onChange={changeHandler}
-          chaked={formdata.cloth}
+          onChange={()=> changeHandler("men's clothing")}
+          chaked={checkeditem.includes("men's clothing")}
         />
           Clothes
         </label>
@@ -83,8 +79,8 @@ function filterHandler(event){
         <input 
           type="checkbox"
           name="jewelery"
-          onChange={changeHandler}
-          chaked={formdata.jewelery}
+          onChange={()=> changeHandler("jewelery")}
+          chaked={checkeditem.includes("jewelery")}
         />
         Jewelery
         </label>
@@ -93,14 +89,14 @@ function filterHandler(event){
         <input 
           type="checkbox"
           name="electronics"
-          onChange={changeHandler}
-          chaked={formdata.slider}
+          onChange={()=> changeHandler('electronics')}
+          chaked={checkeditem.includes('electronics')}
         />
         Electronics
         </label>
         <button>Check Now</button>
        </form>
-      </div>
+      </div> */}
       <div>
       {loading ? (
         <Loading />
